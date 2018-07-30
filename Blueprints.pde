@@ -91,7 +91,6 @@ class Blueprints {
         rect(x + (j * 20), y + (i * 20), boxSize, boxSize);
       }
     }
-    textSize(15);
     fill(255, 255, 255);
     text(name, x, y - 15);
 
