@@ -1,4 +1,4 @@
-
+size(1100, 800);
 boolean gameOver;
 int siz;
 int boxSize; 
@@ -24,7 +24,6 @@ Blueprints rpenta;
 Blueprints pulsar;
 int counter1;
 void setup() {
-  size(1100, 800);
   siz = 40;
   grid = new int[siz][siz];
   counter1 = 0;
