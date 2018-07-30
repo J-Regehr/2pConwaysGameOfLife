@@ -25,11 +25,10 @@ Blueprints pulsar;
 int counter1 = 0;
 void setup() {
   
-  gameOver  = false;
+  gameOver = false;
   redOver = false;
-  gameTime  = false;
-  drawMode   = true;
-  grid   = new int [siz][siz];
+  gameTime = false;
+  drawMode = true;
   jLifered = new ArrayList<Integer>();
   iLifered = new ArrayList<Integer>();
   iLifegreen =  new ArrayList<Integer>();
