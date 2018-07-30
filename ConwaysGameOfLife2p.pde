@@ -1,9 +1,9 @@
 boolean gameOver = false;
-int size = 40;
+int siz = 40;
 int boxSize; 
 boolean drawMode = true;
 boolean gameTime = false;
-int[][] grid = new int [size][size];
+int[][] grid = new int [siz][siz];
 ArrayList<Integer>iDeath = new ArrayList<Integer>();
 ArrayList<Integer>jDeath = new ArrayList<Integer>();
 int counter = 0;
@@ -24,7 +24,7 @@ Blueprints pulsar;
 int counter1 = 0;
 void setup() {
   size(1100, 800);
-  boxSize = height / size;
+  boxSize = height / siz;
   leftSide = new Square(true, 0, 0);
   rightSide = new Square(false, 780, 0);
   glider = new Blueprints("Glider", 825, 500);
@@ -61,8 +61,8 @@ void draw() {
     redTimer += 1;
   counter += 1;
   strokeWeight(1);
-  for (int i = 0; i < size; i++) { 
-    for (int j = 0; j < size; j++) {
+  for (int i = 0; i < siz; i++) { 
+    for (int j = 0; j < siz; j++) {
       if (grid[i][j] == 1) {
         stroke(0);
         fill(255, 0, 0);
@@ -222,36 +222,36 @@ void keyPressed() {
 
 
 void gameoflife() {
-  for (int i = 0; i < size; i++) {
-    for (int j = 0; j < size; j++) {
+  for (int i = 0; i < siz; i++) {
+    for (int j = 0; j < siz; j++) {
       int nbrz = 0;
       int grnbrz = 0;
       int rednbrz = 0;
-      int up = (j-1)%size;
-      int left = (i-1)%size;
+      int up = (j-1)%siz;
+      int left = (i-1)%siz;
       if (up<0) {
-        up = size-1;
+        up = siz-1;
       }
       if (left<0) {
-        left = size - 1;
+        left = siz - 1;
       }
-      if (grid[(i+1)%size][up] == 1 || grid[(i+1)%size][up] == 2) {
+      if (grid[(i+1)%siz][up] == 1 || grid[(i+1)%siz][up] == 2) {
         nbrz += 1;
-        if (grid[(i+1)%size][up] == 1)
+        if (grid[(i+1)%siz][up] == 1)
           rednbrz += 1;
         else
           grnbrz += 1;
       }
-      if (grid[(i+1)%size][j] == 1 || grid[(i+1)%size][j] == 2) {
+      if (grid[(i+1)%siz][j] == 1 || grid[(i+1)%siz][j] == 2) {
         nbrz += 1;
-        if (grid[(i+1)%size][j] == 1)
+        if (grid[(i+1)%siz][j] == 1)
           rednbrz += 1;
         else
           grnbrz += 1;
       }
-      if (grid[(i+1)%size][(j+1)%size] == 1 || grid[(i+1)%size][(j+1)%size] == 2) {
+      if (grid[(i+1)%siz][(j+1)%siz] == 1 || grid[(i+1)%siz][(j+1)%siz] == 2) {
         nbrz += 1;
-        if (grid[(i+1)%size][(j+1)%size] == 1)
+        if (grid[(i+1)%siz][(j+1)%siz] == 1)
           rednbrz += 1;
         else
           grnbrz += 1;
@@ -263,9 +263,9 @@ void gameoflife() {
         else
           grnbrz += 1;
       }
-      if (grid[i][(j+1)%size] == 1 || grid[i][(j+1)%size] == 2) {
+      if (grid[i][(j+1)%siz] == 1 || grid[i][(j+1)%siz] == 2) {
         nbrz += 1;
-        if (grid[i][(j+1)%size] == 1)
+        if (grid[i][(j+1)%siz] == 1)
           rednbrz += 1;
         else
           grnbrz += 1;
@@ -284,9 +284,9 @@ void gameoflife() {
         else
           grnbrz += 1;
       }
-      if (grid[left][(j+1)%size] == 1 || grid[left][(j+1)%size] == 2) {
+      if (grid[left][(j+1)%siz] == 1 || grid[left][(j+1)%siz] == 2) {
         nbrz += 1;
-        if (grid[left][(j+1)%size] == 1)
+        if (grid[left][(j+1)%siz] == 1)
           rednbrz += 1;
         else
           grnbrz += 1;
@@ -341,8 +341,8 @@ boolean drawModeFalse() {
 
 int getRedBlocks() {
   int redBlox = 0;
-  for (int i = 0; i < size; i++) {
-    for (int j = 0; j < size; j++) {
+  for (int i = 0; i < siz; i++) {
+    for (int j = 0; j < siz; j++) {
       if (grid[i][j] == 1) redBlox += 1;
     }
   }
@@ -351,8 +351,8 @@ int getRedBlocks() {
 
 int getGreenBlocks() {
   int greenBlox = 0;
-  for (int i = 0; i < size; i++) {
-    for (int j = 0; j < size; j++) {
+  for (int i = 0; i < siz; i++) {
+    for (int j = 0; j < siz; j++) {
       if (grid[i][j] == 2) greenBlox += 1;
     }
   }
@@ -361,11 +361,11 @@ int getGreenBlocks() {
 
 
 int[][] greenWin() {
-  int[][] currentGrid = new int[size][size];
+  int[][] currentGrid = new int[siz][siz];
   wan Green = new wan(true, false);
   Green.display();
-  for (int i = 0; i < size; i++) {
-    for (int j = 0; j < size; j++) {
+  for (int i = 0; i < siz; i++) {
+    for (int j = 0; j < siz; j++) {
       currentGrid[i][j] = Green.grid[i][j];
     }
   }
@@ -373,11 +373,11 @@ int[][] greenWin() {
 }
 
 int[][] redWin() {
-  int[][] currentGrid = new int[size][size];
+  int[][] currentGrid = new int[siz][siz];
   wan red = new wan(false, false);
   red.display();
-  for (int i = 0; i < size; i++) {
-    for (int j = 0; j < size; j++) {
+  for (int i = 0; i < siz; i++) {
+    for (int j = 0; j < siz; j++) {
       currentGrid[i][j] = red.grid[i][j];
     }
   }
@@ -385,11 +385,11 @@ int[][] redWin() {
 }
 
 int[][] tie() {
-  int[][] currentGrid = new int[size][size];
+  int[][] currentGrid = new int[siz][siz];
   wan tie = new wan(false, true);
   tie.display();
-  for (int i = 0; i < size; i++) {
-    for (int j = 0; j < size; j++) {
+  for (int i = 0; i < siz; i++) {
+    for (int j = 0; j < siz; j++) {
       currentGrid[i][j] = tie.grid[i][j];
     }
   }
@@ -399,8 +399,8 @@ int[][] tie() {
 
 void display() {
   strokeWeight(1);
-  for (int i = 0; i < size; i++) { 
-    for (int j = 0; j < size; j++) {
+  for (int i = 0; i < siz; i++) { 
+    for (int j = 0; j < siz; j++) {
       if (grid[i][j] == 1) {
         stroke(0);
         fill(255, 0, 0);
