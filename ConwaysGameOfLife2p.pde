@@ -35,8 +35,8 @@ void setup() {
   iLifered = new ArrayList<Integer>();
   iLifegreen =  new ArrayList<Integer>();
   jLifegreen = new ArrayList<Integer>();
-  iDeath = new ArrayList<Integer>();
-  jDeath  = new ArrayList<Integer>();
+  iDeath = new ArrayList<Float>();
+  jDeath  = new ArrayList<Float>();
   boxSize = height / siz;
   leftSide = new Square(true, 0, 0);
   rightSide = new Square(false, 780, 0);
