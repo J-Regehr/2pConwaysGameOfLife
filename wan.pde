@@ -1,5 +1,5 @@
 class wan {
-  int [][] grid = new int[size][size];
+  int [][] grid = new int[siz][siz];
   boolean greenWin;
   boolean tie;
   wan(boolean green, boolean noWin) {
