@@ -1,4 +1,4 @@
-
+boolean gameOver = false;
 int size = 40;
 int boxSize; 
 boolean drawMode = true;
@@ -21,8 +21,9 @@ int gameTimer;
 boolean redOver = false;
 Blueprints rpenta;
 Blueprints pulsar;
+int counter1 = 0;
 void setup() {
-  textSize(15);
+
   size(1100, 800);
   boxSize = height / size;
   leftSide = new Square(true, 0, 0);
@@ -36,10 +37,10 @@ void setup() {
 
 void draw() {
   background(0);
-  textSize(20);
+
   fill(255, 255, 255);
   text("Conway's Game of Life 2P", 825, 50); 
-  textSize(14);
+
   text("Made by Daniel B. with help from Jonas R.", 810, 100);
   text("Ported to the web by Jonas R.", 845, 125);
   if (!redOver || !(greenTimer >= 3600)) {
@@ -82,52 +83,60 @@ void draw() {
     gameTime = false;
   }
   if (redOver && greenTimer >= 3600) {
+
     if (getGreenBlocks() == 0  && getRedBlocks() == 0 || gameTimer >= 4800 && getGreenBlocks() == getRedBlocks()) {
       fill(0, 0, 0);
-      textSize(50);
-      text("TIE", width/2 - 200, height/2);
+
+
+      gameOver = true;
+      grid = tie();
+      display();
       stop();
     } else if (getGreenBlocks() == 0 ||( (80 - int(gameTimer/60)) <= 0 && getRedBlocks() > getGreenBlocks())) {
-      fill(255, 0, 0);
-      textSize(50);
-      text("RED WINS", width/2 - 250, height/2);
+      gameOver = true;
+      grid = redWin();
+      display();
       stop();
     } else if (getRedBlocks() == 0 ||( (80 - int(gameTimer/60)) <= 0 && getGreenBlocks() > getRedBlocks())) {
-      fill(0, 255, 0);
-      textSize(50);
-      text("GREEN WINS", width/2 - 250, height/2);
+
+      gameOver = true;
+      grid = greenWin();
+      display();
       stop();
     }
   }
+
   fill(255, 255, 255);
-  textSize(20);
+
   text("Instructions:", 850, 350);
   if (greenTimer >= 3600) {
 
     gameTimer += 1;
     fill(255, 255, 255);
-    textSize(15);
+
     text("\u2660 Shift to end game", 825, 375);
     drawMode = false;
     fill(255, 255, 255);
-    textSize(20);
+
     text("Game time left: " + (80 - int(gameTimer/60)), 850, 200);
-    text(getRedBlocks() + " red blocks", 850, 250);
-    text(getGreenBlocks() + " green blocks", 850, 300);
+    if (!gameOver) {
+      text(getRedBlocks() + " red blocks", 850, 250);
+      text(getGreenBlocks() + " green blocks", 850, 300);
+    }
   }
   if (redTimer < 3600 && !redOver) {
     glider.good = true;
     lwss.good = true;
     rpenta.good = true;
     pulsar.good = true;
-    textSize(15);
+
     fill(255, 255, 255);
     text("\u2660 Enter to start your turn", 825, 375);
     text("\u2660 Arrow Keys to move", 825, 400);
     text("\u2660 Space to place and remove blocks", 825, 425);
     text("\u2660 Shift to end your turn", 825, 450);
     fill(255, 255, 255);
-    textSize(20);
+
     text("Red time left: " + (60-int(redTimer/60)), 850, 200);
     text("Green time left: 60", 850, 225);
     stroke(0, 0, 0);
@@ -141,7 +150,7 @@ void draw() {
     lwss.good = false;
     rpenta.good = false;
     pulsar.good = false;
-    textSize(15);
+
     fill(255, 255, 255);
     text("\u2660 Enter to start your turn", 825, 375);
     text("\u2660 WASD to move", 825, 400);
@@ -150,7 +159,7 @@ void draw() {
     fill(0); 
     rect(400, 0, 400, 800);
     fill(255, 255, 255);
-    textSize(20);
+
     text("Red time left: 0", 850, 200);
     text("Green time left: " + (60-int(greenTimer/60)), 850, 225);
     stroke(0, 0, 0);
@@ -349,4 +358,64 @@ int getGreenBlocks() {
     }
   }
   return greenBlox;
+}
+
+
+int[][] greenWin() {
+  int[][] currentGrid = new int[size][size];
+  wan Green = new wan(true, false);
+  Green.display();
+  for (int i = 0; i < size; i++) {
+    for (int j = 0; j < size; j++) {
+      currentGrid[i][j] = Green.grid[i][j];
+    }
+  }
+  return currentGrid;
+}
+
+int[][] redWin() {
+  int[][] currentGrid = new int[size][size];
+  wan red = new wan(false, false);
+  red.display();
+  for (int i = 0; i < size; i++) {
+    for (int j = 0; j < size; j++) {
+      currentGrid[i][j] = red.grid[i][j];
+    }
+  }
+  return currentGrid;
+}
+
+int[][] tie() {
+  int[][] currentGrid = new int[size][size];
+  wan tie = new wan(false, true);
+  tie.display();
+  for (int i = 0; i < size; i++) {
+    for (int j = 0; j < size; j++) {
+      currentGrid[i][j] = tie.grid[i][j];
+    }
+  }
+  return currentGrid;
+}
+
+
+void display() {
+  strokeWeight(1);
+  for (int i = 0; i < size; i++) { 
+    for (int j = 0; j < size; j++) {
+      if (grid[i][j] == 1) {
+        stroke(0);
+        fill(255, 0, 0);
+      } else if (grid[i][j] == 2) {
+        stroke(0);
+        fill(0, 255, 0);
+      } else if (grid[i][j] == 0) {
+        stroke(0);
+        fill(255);
+      } else if (grid[i][j] == 3) {
+        stroke(255);
+        fill(0);
+      }
+      rect(j*20, i*20, boxSize, boxSize);
+    }
+  }
 }
