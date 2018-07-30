@@ -12,7 +12,6 @@ class Blueprints {
     //  size = Startsize;
     x = startx;
     y = starty;
-    
   }
   void setTemp() {
     if (name == "Glider") {
@@ -40,40 +39,39 @@ class Blueprints {
       sizeGrid[4][4] = 1;
       sizeGrid[4][5] = 1;
     }
-    if (name == "R-Pentamino"){
-       xsize = 5;
-       ysize = 5;
-       sizeGrid = new int[ysize][xsize];
-       sizeGrid[1][2] = 1;
-       sizeGrid[1][3] = 1;
-       sizeGrid[2][1] = 1;
-       sizeGrid[2][2] = 1;
-       sizeGrid[3][2] = 1;
+    if (name == "R-Pentamino") {
+      xsize = 5;
+      ysize = 5;
+      sizeGrid = new int[ysize][xsize];
+      sizeGrid[1][2] = 1;
+      sizeGrid[1][3] = 1;
+      sizeGrid[2][1] = 1;
+      sizeGrid[2][2] = 1;
+      sizeGrid[3][2] = 1;
     }
-    if (name == "Pulsar"){
-      
-       xsize = 7;
-       ysize = 5;
-       sizeGrid = new int[ysize][xsize];
-       sizeGrid[1][1] = 1;
-       sizeGrid[2][1] = 1;
-       sizeGrid[3][1] = 1;
-       sizeGrid[1][2] = 1;
-       sizeGrid[3][2] = 1;
-       sizeGrid[1][3] = 1;
-       sizeGrid[3][3] = 1;
-       sizeGrid[1][4] = 1;
-       sizeGrid[3][4] = 1;
-       sizeGrid[1][5] = 1;
-       sizeGrid[2][5] = 1;
-       sizeGrid[3][5] = 1;
-       
+    if (name == "Pulsar") {
+
+      xsize = 7;
+      ysize = 5;
+      sizeGrid = new int[ysize][xsize];
+      sizeGrid[1][1] = 1;
+      sizeGrid[2][1] = 1;
+      sizeGrid[3][1] = 1;
+      sizeGrid[1][2] = 1;
+      sizeGrid[3][2] = 1;
+      sizeGrid[1][3] = 1;
+      sizeGrid[3][3] = 1;
+      sizeGrid[1][4] = 1;
+      sizeGrid[3][4] = 1;
+      sizeGrid[1][5] = 1;
+      sizeGrid[2][5] = 1;
+      sizeGrid[3][5] = 1;
     }
   }
 
 
   void display() {
-    
+
     for (int i = 0; i < ysize; i++) {
 
       for (int j = 0; j < xsize; j++) {
@@ -91,8 +89,8 @@ class Blueprints {
         rect(x + (j * 20), y + (i * 20), boxSize, boxSize);
       }
     }
+    
     fill(255, 255, 255);
     text(name, x, y - 15);
-
   }
 }
