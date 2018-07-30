@@ -1,4 +1,4 @@
-
+size(1100, 800);
 boolean gameOver;
 int siz;
 int boxSize; 
@@ -24,7 +24,7 @@ Blueprints rpenta;
 Blueprints pulsar;
 int counter1 = 0;
 void setup() {
-  size(1100, 800);
+  
   gameOver  = false;
   siz   = 40;
   redOver = false;
