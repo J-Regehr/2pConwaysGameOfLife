@@ -1,13 +1,13 @@
-size(1100, 800);
+
 boolean gameOver;
-int siz = 40;
+int siz;
 int boxSize; 
 boolean drawMode;
 boolean gameTime;
-int[][] grid = new int[siz][siz];
-/*ArrayList<Integer>iDeath;
-ArrayList<Integer>jDeath; */
-int counter = 0;
+int[][] grid;
+ArrayList<Integer>iDeath;
+ArrayList<Integer>jDeath; 
+int counter;
 int greenTimer;
 ArrayList<Integer>iLifegreen;
 ArrayList<Integer>jLifegreen;
@@ -22,9 +22,13 @@ int gameTimer;
 boolean redOver;
 Blueprints rpenta;
 Blueprints pulsar;
-int counter1 = 0;
+int counter1;
 void setup() {
-  
+  size(1100, 800);
+  siz = 40;
+  grid = new int[siz][siz];
+  counter1 = 0;
+  counter = 0;
   gameOver = false;
   redOver = false;
   gameTime = false;
@@ -33,8 +37,8 @@ void setup() {
   iLifered = new ArrayList<Integer>();
   iLifegreen =  new ArrayList<Integer>();
   jLifegreen = new ArrayList<Integer>();
-  ArrayList<Integer> iDeath = new ArrayList<Integer>();
-  ArrayList<Integer> jDeath  = new ArrayList<Integer>();
+  iDeath = new ArrayList<Integer>();
+  jDeath  = new ArrayList<Integer>();
   boxSize = height / siz;
   leftSide = new Square(true, 0, 0);
   rightSide = new Square(false, 780, 0);
