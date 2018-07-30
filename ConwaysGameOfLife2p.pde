@@ -5,7 +5,7 @@ int boxSize;
 boolean drawMode;
 boolean gameTime;
 int[][] grid;
-ArrayList<Integer>iDeath;
+//ArrayList<Integer>iDeath;
 ArrayList<Integer>jDeath;
 int counter = 0;
 int greenTimer;
