@@ -5,8 +5,8 @@ int boxSize;
 boolean drawMode;
 boolean gameTime;
 int[][] grid = new int[siz][siz];
-ArrayList<Integer>iDeath;
-ArrayList<Integer>jDeath;
+/*ArrayList<Integer>iDeath;
+ArrayList<Integer>jDeath; */
 int counter = 0;
 int greenTimer;
 ArrayList<Integer>iLifegreen;
@@ -33,8 +33,8 @@ void setup() {
   iLifered = new ArrayList<Integer>();
   iLifegreen =  new ArrayList<Integer>();
   jLifegreen = new ArrayList<Integer>();
-  iDeath = new ArrayList<Integer>();
-  jDeath  = new ArrayList<Integer>();
+  ArrayList<Integer> iDeath = new ArrayList<Integer>();
+  ArrayList<Integer> jDeath  = new ArrayList<Integer>();
   boxSize = height / siz;
   leftSide = new Square(true, 0, 0);
   rightSide = new Square(false, 780, 0);
