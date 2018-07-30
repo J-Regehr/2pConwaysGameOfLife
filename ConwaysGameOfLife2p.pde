@@ -1,11 +1,11 @@
 size(1100, 800);
 boolean gameOver;
-int siz;
+int siz = 40;
 int boxSize; 
 boolean drawMode;
 boolean gameTime;
-int[][] grid;
-//ArrayList<Integer>iDeath;
+int[][] grid = new int[siz][siz];
+ArrayList<Integer>iDeath;
 ArrayList<Integer>jDeath;
 int counter = 0;
 int greenTimer;
@@ -26,7 +26,6 @@ int counter1 = 0;
 void setup() {
   
   gameOver  = false;
-  siz   = 40;
   redOver = false;
   gameTime  = false;
   drawMode   = true;
