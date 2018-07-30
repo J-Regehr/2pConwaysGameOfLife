@@ -23,7 +23,6 @@ Blueprints rpenta;
 Blueprints pulsar;
 int counter1 = 0;
 void setup() {
-  size(1100, 800);
   boxSize = height / siz;
   leftSide = new Square(true, 0, 0);
   rightSide = new Square(false, 780, 0);
